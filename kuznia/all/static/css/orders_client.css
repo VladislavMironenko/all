@@ -1,0 +1,87 @@
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для лейблов и инпутов */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Стили для кнопки */
+.send {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.send:hover {
+    background-color: #2980b9;
+}
+
+/* Стили для параграфов */
+p {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+a{
+    margin-left: 26%;
+    text-decoration: none;
+}
+
+
+
+@media (min-width: 320px) and (max-width: 425px) {
+    form {
+        max-width: 90%; /* Уменьшаем максимальную ширину формы */
+        margin: 0 auto; /* Центрируем форму */
+        padding: 15px; /* Уменьшаем отступы внутри формы */
+        font-size: 14px; /* Уменьшаем размер шрифта для лучшей читаемости */
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        padding: 6px; /* Уменьшаем внутренние отступы у инпутов */
+        margin-bottom: 8px; /* Уменьшаем отступ между инпутами */
+        font-size: 14px; /* Уменьшаем размер шрифта у инпутов */
+    }
+
+    label {
+        margin-bottom: 3px; /* Уменьшаем отступ после лейблов */
+        font-size: 14px; /* Уменьшаем размер шрифта у лейблов */
+    }
+
+    .send {
+        font-size: 14px; /* Уменьшаем размер шрифта у кнопки */
+        margin-left: 0; /* Убираем отступ слева у кнопки */
+    }
+
+    p {
+        margin-bottom: 30px; /* Уменьшаем отступ между параграфами */
+    }
+
+}

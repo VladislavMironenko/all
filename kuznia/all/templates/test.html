@@ -1,0 +1,68 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Spinning Wheel</title>#}
+{#    <style>#}
+{#        /* Стили для колеса */#}
+{#        #wheel {#}
+{#            width: 300px;#}
+{#            height: 300px;#}
+{#            border: 2px solid #000;#}
+{#            border-radius: 50%;#}
+{#            position: relative;#}
+{#            overflow: hidden;#}
+{#        }#}
+{##}
+{#        /* Стили для секторов колеса */#}
+{#        .wheel-section {#}
+{#            position: absolute;#}
+{#            width: 0;#}
+{#            height: 0;#}
+{#            border-style: solid;#}
+{#            border-width: 150px 75px 0;#}
+{#            border-color: red transparent transparent;#}
+{#            transform-origin: 50% 100%;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#    <div id="wheel"></div>#}
+{#    <button onclick="spinWheel()">Крутить колесо</button>#}
+{##}
+{#    <script>#}
+{#        // Добавление секторов на колесо#}
+{#        const wheel = document.getElementById('wheel');#}
+{#        const sectors = ['Пицца', 'Кола', 'Гамбургер', 'Спагетти', 'Салат', 'Чай'];#}
+{##}
+{#        function createWheelSectors() {#}
+{#            const angle = 360 / sectors.length;#}
+{#            let rotation = 0;#}
+{##}
+{#            sectors.forEach((sector, index) => {#}
+{#                const wheelSection = document.createElement('div');#}
+{#                wheelSection.classList.add('wheel-section');#}
+{#                wheelSection.style.transform = `rotate(${rotation}deg)`;#}
+{#                wheelSection.innerHTML = `<span>${sector}</span>`;#}
+{#                wheel.appendChild(wheelSection);#}
+{#                rotation += angle;#}
+{#            });#}
+{#        }#}
+{##}
+{#        createWheelSectors();#}
+{##}
+{#        // Функция вращения колеса#}
+{#        function spinWheel() {#}
+{#            const randomDegree = Math.floor(Math.random() * 360) + 3600;#}
+{#            wheel.style.transition = 'transform 5s ease-out';#}
+{#            wheel.style.transform = `rotate(${randomDegree}deg)`;#}
+{##}
+{#            setTimeout(() => {#}
+{#                const actualDegree = randomDegree % 360;#}
+{#                const index = Math.floor(actualDegree / (360 / sectors.length));#}
+{#                alert(`Колесо остановилось на: ${sectors[index]}`);#}
+{#            }, 5000);#}
+{#        }#}
+{#    </script>#}
+{#</body>#}
+{#</html>#}

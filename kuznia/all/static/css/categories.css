@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Равномерное распределение между товарами */
+    padding: 0 10px; /* Добавление отступов по бокам для выравнивания */
+    margin: 0 -10px; /* Отрицательный margin для компенсации padding и избежания горизонтальной прокрутки */
+    box-sizing: border-box; /* Учитываем padding и margin в ширине элементов */
+}
+
+.product {
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    padding: 0 10px; /* Отступы по бокам для выравнивания */
+    box-sizing: border-box; /* Учитываем padding и margin в ширине элемента */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-content {
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.product-image {
+    width: 200px;
+    height: 200px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 5px 5px 0 0;
+}
+
+.product-title {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-price {
+    color: #008cba;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+}

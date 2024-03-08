@@ -1,0 +1,469 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.cart {
+    margin-left: auto; /* Размещение блока "Корзина" справа */
+}
+
+.mobile-menu-icon {
+    margin-left: 10px; /* Отступ между .cart и .mobile-menu-icon */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Равномерное распределение элементов */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.search input[type="text"] {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+
+.search button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+/*nav ul li {*/
+/*    margin-right: 20px;*/
+/*}*/
+
+nav ul li a {
+    text-decoration: none;
+    color: ghostwhite;
+}
+
+.cart a {
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+/*footer {*/
+/*    z-index: 99999;*/
+/*    text-align: center;*/
+/*    padding: 10px;*/
+/*    background-color: #f2f2f2;*/
+/*    position: fixed;*/
+/*    bottom: 0;*/
+/*    width: 100%;*/
+/*}*/
+
+nav a:hover{
+    background-color: #c31432;
+}
+
+nav .menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+nav .menu-item {
+    position: relative;
+    margin-right: 200px;
+}
+
+nav .menu-item > .sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: gray;
+    margin-top: 7px;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav .menu-item:hover > .sub-menu {
+    display: block;
+}
+
+nav .menu-item a {
+    text-decoration: none;
+    color: ghostwhite;
+}
+
+nav .menu-item > a.p-categories {
+    padding: 8px 12px;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.search input[type="text"] {
+    width: 300px; /* Занимаем всю доступную ширину */
+    /*margin-left: 180px !* Убираем правый отступ *!*/
+}
+
+
+.search-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Стили для сообщений об отсутствии результатов или товаров */
+.no-results {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    margin-top: 20px;
+}
+.search {
+    display: flex;
+    justify-content: center;
+    flex-grow: 2; /* Занимает доступное пространство для равномерного распределения */
+    text-align: center; /* Центрирование содержимого внутри блока "Поиск" */
+}
+
+.p-categories{
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.menu-item {
+    position: relative;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+/* Стили для отображения подменю подкатегорий при наведении на категорию */
+.category-item:hover .sub-menu {
+    display: block;
+}
+
+/* Оформление категорий и подкатегорий */
+.category-item {
+    position: relative;
+}
+.category_mobile a{
+    position: relative;
+    right: 180px;
+    top: 10px;
+}
+
+.category {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+}
+
+.subcategory {
+    color: #666;
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+}
+
+/* Стили для вложенных подменю, если есть */
+.sub-sub-menu {
+    background-color: gray;
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+.subcategory:hover .sub-sub-menu {
+    display: block;
+}
+
+.len_order {
+    background-color: #c31432;
+    width: 20px; /* Регулируйте размер в соответствии с вашими предпочтениями */
+    height: 20px; /* Регулируйте размер в соответствии с вашими предпочтениями */
+    border-radius: 50%; /* Делаем элемент круглым */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: -13px;
+    margin-left: 19px;
+    font-weight: bold;
+}
+
+p{
+    margin-top: -7px;
+}
+
+
+
+.mobile-menu-icon {
+    display: block;
+    cursor: pointer;
+    /* Другие стили */
+}
+
+.mobile-menu-panel a{
+    position: relative;
+    left: 20px;
+    background-color: #007bff;
+    font-size: 30px;
+}
+
+
+.mobile-menu-icon span {
+    display: none;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease; /* Добавляем переход для анимации */
+}
+
+/* Поворот иконки меню при активации */
+.mobile-menu-icon.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    position: relative;
+    /*right: 200px;*/
+    z-index: 1;
+}
+
+.mobile-menu-icon.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-icon.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+    position: relative;
+    /*right: 200px;*/
+    z-index: 1;
+}
+
+/* Скрыть панель по умолчанию */
+.mobile-menu-panel {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Добавляем переход для анимации */
+    position: fixed; /* Фиксированное положение */
+    top: 0;
+    margin-top: 60px;
+    right: -300px; /* Помещаем за пределы экрана */
+    width: 300px; /* Ширина меню */
+    height: 100%;
+    /* Другие стили для панели */
+}
+
+/* Показать панель при активации иконки меню */
+.mobile-menu-icon.active ~ .mobile-menu-panel {
+    display: block;
+    opacity: 1; /* Плавно показываем панель */
+    right: 0; /* Сдвигаем вправо для отображения */
+    /* Другие стили для панели */
+}
+
+
+.p-categories_mobile{
+    /*margin-right: 500px;*/
+    font-size: 20px;
+}
+
+.mobile-menu-panel {
+    /*position: relative;*/
+    z-index: 99999;
+    background-color: white; /* Цвет фона */
+    padding: 10px; /* Внутренний отступ */
+}
+
+/* Стили для ссылки "Корзина" */
+.mobile-menu-panel a {
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+    color: #333; /* Цвет текста */
+    margin-right: 20px; /* Отступ между элементами */
+}
+
+
+/*!* Стили для основной ссылки "Категории" *!*/
+/*.p-categories_mobile {*/
+/*    text-decoration: none; !* Убираем подчеркивание у ссылок *!*/
+/*    color: #333; !* Цвет текста *!*/
+/*    margin-right: 20px; !* Отступ между элементами *!*/
+/*    cursor: pointer; !* Изменение курсора при наведении *!*/
+/*}*/
+
+/* Стили для основного меню категорий */
+.sub-menu_mobile {
+    display: none; /* Скрываем основное меню по умолчанию */
+    list-style: none; /* Убираем маркеры списка */
+    padding-left: 0; /* Убираем отступ у списка */
+}
+
+/* Стили для категорий */
+.category-item_mobile {
+    margin-bottom: 10px; /* Отступ между категориями */
+}
+
+/* Стили для ссылок категорий */
+.category_mobile, .subcategory_mobile {
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+    color: #333; /* Цвет текста */
+}
+
+/* Стили для подкатегорий */
+.sub-sub-menu_mobile {
+    display: none; /* Скрываем подменю подкатегорий по умолчанию */
+    list-style: none; /* Убираем маркеры списка */
+    padding-left: 0; /* Убираем отступ у списка */
+    margin-top: 5px; /* Отступ сверху для подкатегорий */
+}
+
+/* Стили для активного подменю при открытии */
+.show-sub-menu .sub-menu_mobile {
+    display: block; /* Показываем основное меню при активации */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Показываем панель с использованием анимации */
+.mobile-menu-panel {
+    display: none;
+    animation: fadeIn 0.3s ease forwards; /* Запускаем анимацию при показе */
+    /* Другие стили для панели */
+}
+
+/* Показываем панель при активации иконки меню */
+.mobile-menu-icon.active ~ .mobile-menu-panel {
+    display: block;
+    /* Другие стили для панели */
+}
+/*@media (max-width: 425px) {*/
+/*    .logo a {*/
+/*        font-size: 20px; !* Изменил размер шрифта для лучшей адаптации *!*/
+/*    }*/
+
+/*    !*.p-categories{*!*/
+/*    !*    font-size: 13px;*!*/
+/*    !*}*!*/
+/*    .search input[type="text"] {*/
+/*        position: absolute;*/
+/*        left: 26%;*/
+/*        top: 80px;*/
+/*        font-size: 10px;*/
+/*        padding: 8px; !* Увеличил отступы для улучшения доступности *!*/
+/*    }*/
+
+/*    .search button {*/
+/*        position: absolute;*/
+/*        left: 60%;*/
+/*        top: 80px;*/
+/*        padding: 6px 7px; !* Увеличил отступы кнопки *!*/
+/*    }*/
+
+/*    nav ul {*/
+/*        flex-direction: column;*/
+/*        align-items: flex-start;*/
+/*        padding: 10px;*/
+/*        position: static; !* Изменил позиционирование для лучшей адаптации *!*/
+/*        width: 100%;*/
+/*        display: block; !* Показываем меню по умолчанию *!*/
+/*    }*/
+
+/*    !* Удалил стили для .nav ul.active, так как меню по умолчанию показывается *!*/
+/*    .menu-item {*/
+/*        position: static; !* Изменил позиционирование для лучшей адаптации *!*/
+/*    }*/
+
+
+/*    .len_order {*/
+/*        width: 20px; !* Увеличил размер значка для лучшей видимости *!*/
+/*        height: 20px; !* Изменения размеров для улучшения видимости *!*/
+/*        margin-top: -8px;*/
+/*    }*/
+/*}*/
+
+
+@media screen and (max-width: 768px) {
+    .mobile-menu-icon span{
+        display: block;
+    }
+
+    .header {
+        grid-template-columns: auto; /* Изменяем распределение элементов в одну колонку */
+        text-align: center; /* Выравниваем элементы по центру */
+    }
+
+    .search input[type="text"] {
+        width: 100%; /* Занимаем всю доступную ширину */
+        margin-right: 0; /* Убираем правый отступ */
+    }
+
+    .search button {
+        margin-right: 0; /* Убираем правый отступ */
+    }
+
+    .cart,
+    nav {
+        display: none; /* Скрываем корзину и навигацию в header */
+    }
+
+    /* Показываем иконку меню на мобильных устройствах */
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    /* Показываем панель на мобильных устройствах */
+    .mobile-menu-panel {
+        display: none;
+        /* Другие стили для панели */
+    }
+
+    /* Показываем панель при активации иконки меню */
+    .mobile-menu-icon.active ~ .mobile-menu-panel {
+        display: block;
+        /* Другие стили для панели */
+    }
+}

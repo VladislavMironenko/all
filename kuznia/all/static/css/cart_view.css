@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+
+}
+
+.item-images{
+    height: 85px;
+    width: 85px;
+}
+
+
+
+.container {
+    text-align: center;
+    max-width: 600px; /* Ширина контейнера */
+    margin: 20px auto; /* Центрирование контейнера */
+    border: 1px solid #ccc; /* Граница контейнера */
+    border-radius: 5px; /* Закругление углов */
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-top: 1px solid #ccc; /* Линия под заголовками */
+    border-bottom: 1px solid #ccc; /* Линия под заголовками */
+}
+
+.labels p {
+    flex-basis: 30%; /* Ширина для заголовков */
+    padding: 5px 0;
+    position: relative;
+}
+
+.labels p:not(:last-child):after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -1px;
+    transform: translateY(-50%);
+    height: 80%;
+    border-right: 1px solid #ccc; /* Вертикальные линии между заголовками */
+}
+
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+    border-bottom: 1px solid #ccc; /* Линия под заголовками */
+}
+
+.cart-items li {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-items: center; /* Выравнивание элементов по вертикали */
+}
+
+.item-left, .item-center, .item-right {
+    flex-basis: 30%; /* Ширина для элементов */
+    border-right: 1px solid #ccc; /* Вертикальные линии между товарами */
+    padding: 0 5px; /* Отступы по бокам */
+}
+
+.item-left:first-child, .item-center:first-child, .item-right:first-child {
+    border-left: 1px solid #ccc; /* Линия слева у первого товара */
+}
+
+.total-price {
+    font-weight: bold;
+}
+
+.order-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-button:hover {
+    background-color: #0056b3;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+@media (max-width: 1000px) {
+    .container {
+        max-width: 90%; /* Уменьшаем максимальную ширину контейнера */
+        padding: 10px; /* Уменьшаем внутренние отступы контейнера */
+    }
+
+    .labels, .labels p, .cart-items li, .item-left, .item-center, .item-right {
+        width: 100%; /* Занимаем всю доступную ширину */
+        padding: 10px; /* Увеличиваем внутренние отступы для читаемости */
+        border: 1px solid #ccc; /* Добавляем границу для ясности структуры */
+        margin-bottom: 10px; /* Добавляем отступ между элементами */
+        border-radius: 5px; /* Закругляем углы элементов */
+    }
+
+    .labels p:not(:last-child), .item-left, .item-center, .item-right {
+        margin-bottom: 5px; /* Уменьшаем отступ между элементами */
+    }
+
+    .labels {
+        border: none; /* Убираем обводку у строки заголовков */
+    }
+
+    .labels p:not(:last-child):after {
+        display: none; /* Убираем вертикальные линии между заголовками */
+    }
+
+    .cart-items li {
+        border: none; /* Убираем обводку у строки элементов */
+    }
+
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static "css/post_pages.css" %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+    <!-- Кнопки для переключения изображений -->
+    <button id="prevBtn">◄</button>
+    {% for images in info.images.all %}
+        <img class="images" src="{{ images.image.url }}" style="display: none;">
+    {% endfor %}
+    <button id="nextBtn">►</button>
+    <p class="title">{{ info.name }}</p>
+    <p class="price">{{ info.price }} UAH</p>
+    <p class="description">{{ info.description }}</p>
+    <p></p>
+     <!-- Кнопка "Добавить в корзину" -->
+    <button id="addToCartBtn">Добавить в корзину</button>
+    <a id="addToCartBtn" href="{% url 'all_products' %}">На главную</a>
+
+    <!-- Скрытая панель для заказа -->
+    <div id="orderPanel">
+        <!-- Содержимое вашей панели заказа -->
+        <!-- Например, форма заказа, информация о товаре и т.д. -->
+        <form method="post" action="{% url 'order_product' info.id %}">
+            {% csrf_token %}
+            <label for="quantity">Количество:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1">
+            <button type="submit">Добавить в корзину</button>
+        </form>
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.images');
+        let currentImageIndex = 0;
+
+        // Показываем первое изображение при загрузке страницы
+        images[currentImageIndex].style.display = 'block';
+
+        // Функция для переключения на следующее изображение
+        function showNextImage() {
+            images[currentImageIndex].style.display = 'none';
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            images[currentImageIndex].style.display = 'block';
+        }
+
+        // Функция для переключения на предыдущее изображение
+        function showPrevImage() {
+            images[currentImageIndex].style.display = 'none';
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            images[currentImageIndex].style.display = 'block';
+        }
+
+        // Назначаем обработчики событий на кнопки
+        document.getElementById('nextBtn').addEventListener('click', showNextImage);
+        document.getElementById('prevBtn').addEventListener('click', showPrevImage);
+
+        document.getElementById('addToCartBtn').addEventListener('click', function(event) {
+            event.preventDefault(); // Предотвращаем стандартное действие кнопки
+            // Показываем скрытую панель с анимацией
+            document.getElementById('orderPanel').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

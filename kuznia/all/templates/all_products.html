@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/all_products.css' %}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Наш магазин</h1>
+        <div class="product-grid">
+            {% for i in products %}
+                <div class="product">
+                    <div class="product-content">
+                        {% for images in i.images.all %}
+                            <img class="product-image" src="{{ images.image.url }}">
+                        {% endfor %}
+                        <p class="product-title"><a href={{ i.id }}>{{ i.name }}</a></p>
+                        <p class="product-price">{{ i.price }}</p>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                    <div class="break"></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

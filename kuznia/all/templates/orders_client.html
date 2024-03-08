@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static "css/orders_client.css" %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <label for="id_branch_number">Страна:</label>
+    {{ form.country }}
+    <label for="id_branch_number">Город:</label>
+    {{ form.city }}
+    <label for="id_branch_number">Номер отделения:</label>
+    {{ form.branch_number }}
+    <p>
+Пожалуйста, убедитесь, что ваш заказ соответствует допустимому весу для отправки через отделение. В случае превышения допустимого веса, мы можем столкнуться с ограничениями при отправке вашего товара.</p>
+    <label for="id_first_name">Имя:</label>
+    {{ form.first_name }}
+    <p></p>
+    <label for="id_last_name">Фамилия:</label>
+    {{ form.last_name }}
+    <p></p>
+    <label for="id_patronymic">Отчество:</label>
+    {{ form.patronymic }}
+    <p></p>
+    <label for="id_phone_number">Номер телефона:</label>
+    {{ form.phone_number }}
+    {{ form.my_checkbox }}   Пожалуйста, обратите внимание, что мы используем службу доставки Новая Почта для отправки заказов. Пожалуйста, убедитесь, что в вашем регионе доступна услуга доставки через Новую Почту перед оформлением заказа.
+    <p></p>
+    <button class="send" type="submit">Оформить заказ</button>
+    <a class="send" href="{% url 'all_products' %}">На главную</a>
+    </form>
+</body>
+</html>
+

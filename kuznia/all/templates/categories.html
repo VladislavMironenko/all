@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/all_products.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <!-- Добавленный контент -->
+{#    <h1>{{ category.categories }}</h1>#}
+{##}
+{#    {% if parent_category %}#}
+{#        <h2>Родительская категория: {{ parent_category.categories }}</h2>#}
+{#    {% endif %}#}
+{##}
+{#    {% if related_categories %}#}
+{#        <h2>Связанные категории:</h2>#}
+{#        <ul>#}
+{#            {% for related_category in related_categories %}#}
+{#                <li>{{ related_category.categories }}</li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#    {% endif %}#}
+
+    <!-- Продукты -->
+    <div class="product-grid">
+    {% for product in products %}
+        <a href="/{{ product.id }}" class="product">
+            <div class="product-content">
+                {% for image in product.images.all %}
+                    <img class="product-image" src="{{ image.image.url }}">
+                {% endfor %}
+                <p class="product-title">{{ product.name }}</p>
+                <p class="product-price">{{ product.price }} UAH</p>
+            </div>
+        </a>
+    {% endfor %}
+    </div>
+</div>
+</body>
+</html>

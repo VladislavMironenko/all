@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Store</title>
+           <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
+    <link rel="stylesheet" href="{% static 'css/all_products.css' %}">
+</head>
+<body>
+{% block title %}
+    <div class="header">
+        <div class="logo">
+            <a href="{% url 'all_products' %}">Home</a>
+        </div>
+        <div class="search">
+            <form id="qq" method="get" action="{% url 'all_products' %}">
+                <input type="text" placeholder="Search here..." name="search">
+            </form>
+            <button id="button-search">🔍</button>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li class="menu-item">
+                    <a  class="p-categories">Категории</a>
+                    <ul class="sub-menu">
+                        {% for category in categories %}
+                            {% if category.parent is None %}
+                            <li class="category-item">
+                                <a href="/{{ category }}" class="category">{{ category }}</a>
+                                <ul class="sub-sub-menu">
+                                    {% for subcategory in category.children.all %}
+                                        <li><a href="/{{ subcategory }}" class="subcategory">{{ subcategory }}</a></li>
+                                        <!-- Добавьте дополнительные подкатегории здесь, если есть -->
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="cart">
+            <a href="{% url 'cart_view' %}">🛒</a>
+            <p class="len_order">{{ len_order }}</p>
+        </div>
+        <div class="mobile-menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+            <nav class="mobile-menu-panel">
+                <a href="{% url 'cart_view' %}">Корзина</a>
+                <div class="category_mobile">
+                    <a id="toggle-categories" class="p-categories_mobile">Категории</a>
+                    <ul class="sub-menu_mobile">
+                        {% for category in categories %}
+                            {% if category.parent is None %}
+                                <li class="category-item_mobile">
+                                    <a href="/{{ category }}" class="category_mobile">{{ category }}</a>
+                                    <ul class="sub-sub-menu_mobile">
+                                        {% for subcategory in category.children.all %}
+                                            <li><a href="/{{ subcategory }}" class="subcategory_mobile">{{ subcategory }}</a></li>
+                                            <!-- Добавьте дополнительные подкатегории здесь, если есть -->
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+{% endblock %}
+    <div class="container">
+        <div class="product-grid">
+{#            {% if search_query %}#}
+{#                <h2 class="search-header">Результаты поиска для "{{ search_query }}"</h2>#}
+{#            {% endif %}#}
+            {% for i in products %}
+                {% if i.available %}
+                <a href="/{{ i.id }}" class="product">
+                    <div class="product-content">
+                        {% for image in i.images.all %}
+                            {% if forloop.first %}
+                                <img class="product-image" src="{{ image.image.url }}">
+                            {% endif %}
+                        {% endfor %}
+                        <div class="a">
+                            <p class="product-title">{{ i.name }}</p>
+                            <p class="product-price">{{ i.price }} UAH</p>
+                        </div>
+                    </div>
+                </a>
+                {% endif %}
+            {% empty %}
+                {% if search_query %}
+                    <p class="no-results">Товар не найден для "{{ search_query }}"</p>
+                {% else %}
+                    <p class="no-results"> В магазине нет доступных товаров</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var toggleCategories = document.getElementById('toggle-categories');
+    var subMenus = document.querySelectorAll('.sub-sub-menu_mobile');
+
+    toggleCategories.addEventListener('click', function(event) {
+        event.preventDefault(); // Предотвращаем переход по ссылке
+
+        var subMenuMobile = document.querySelector('.sub-menu_mobile');
+        subMenuMobile.classList.toggle('show-sub-menu');
+    });
+
+    var categories = document.querySelectorAll('.category-item_mobile');
+
+    categories.forEach(function(category) {
+        category.addEventListener('dblclick', function(event) {
+            // Разрешаем стандартное действие при двойном клике (переход по ссылке)
+            window.location = category.querySelector('.category_mobile').getAttribute('href');
+        });
+
+        category.addEventListener('click', function(event) {
+            if (!event.target.classList.contains('subcategory_mobile')) {
+                event.preventDefault(); // Предотвращаем переход по ссылке категории при одиночном клике
+
+                var subSubMenu = this.querySelector('.sub-sub-menu_mobile');
+                subMenus.forEach(function(subMenu) {
+                    subMenu.style.display = 'none';
+                });
+                subSubMenu.style.display = 'block';
+            }
+        });
+    });
+});
+    $(document).ready(function(){
+                $('#toggle-categories').click(function(){
+                    $('.sub-menu_mobile').toggle(); // Переключение видимости подменю при клике на "Категории"
+                });
+            });
+        document.getElementById('button-search').addEventListener('click', function(event) {
+        event.preventDefault(); // Предотвращаем стандартное поведение кнопки
+
+        // Получаем форму по ее ID и отправляем ее
+        const form = document.getElementById('qq');
+        form.submit();
+        });
+        // Найти все категории с подменю
+        const categoriesWithSubMenu = document.querySelectorAll('nav ul li');
+
+        // Для каждой категории с подменю добавить обработчик события
+        categoriesWithSubMenu.forEach(category => {
+            category.addEventListener('mouseenter', () => {
+                const subMenu = category.querySelector('ul');
+                if (subMenu) {
+                    subMenu.style.display = 'block';
+                }
+            });
+
+            category.addEventListener('mouseleave', () => {
+                const subMenu = category.querySelector('ul');
+                if (subMenu) {
+                    subMenu.style.display = 'none';
+                }
+            });
+        });
+
+        const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
+
+// Добавляем обработчик события для клика по иконке меню
+mobileMenuIcon.addEventListener('click', function() {
+    // Добавляем/удаляем класс 'active' при клике
+    this.classList.toggle('active');
+});
+</script>

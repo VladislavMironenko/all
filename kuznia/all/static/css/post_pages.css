@@ -1,0 +1,163 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.images {
+    max-width: 350px;
+    height: 350px;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.price {
+    font-size: 18px;
+    color: #008cba;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#addToCartBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+#addToCartBtn:hover {
+    background-color: #2980b9;
+}
+
+#orderPanel {
+    display: none;
+    position: fixed;
+    top: 675px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: gray;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    font-family: Arial, sans-serif;
+}
+#orderPanel h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+#orderPanel form {
+    margin-top: 20px;
+}
+#orderPanel form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+#orderPanel form input[type="number"],
+#orderPanel form button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+#orderPanel form input[type="number"] {
+    width: 100px;
+}
+#orderPanel form button {
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+#orderPanel form button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Стиль для активации скрытой панели */
+#orderPanel.active {
+    display: block;
+    opacity: 1;
+}
+
+
+a{
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+
+
+@media (max-width: 1200px) {
+    body {
+        padding: 10px; /* Уменьшаем отступы */
+    }
+
+    .images {
+        max-width: 300px; /* Максимальная ширина изображений */
+        height: 300px; /* Автоматическая высота изображений */
+        margin-bottom: 10px; /* Уменьшаем отступ после изображений */
+    }
+
+    .title {
+        font-size: 20px; /* Уменьшаем размер заголовка */
+        margin-bottom: 5px; /* Уменьшаем отступ после заголовка */
+    }
+
+    .price {
+        font-size: 16px; /* Уменьшаем размер цены */
+        margin-bottom: 20px; /* Уменьшаем отступ после цены */
+    }
+
+    #addToCartBtn {
+        padding: 8px 15px; /* Уменьшаем отступы кнопки */
+        font-size: 14px; /* Уменьшаем размер текста кнопки */
+    }
+
+    #orderPanel {
+        position: fixed;
+        top: 510px; /* Размещаем панель заказа внизу экрана */
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 15px; /* Увеличиваем отступы внутри панели */
+        max-width: 300px; /* Уменьшаем максимальную ширину панели */
+    }
+
+    #orderPanel h2 {
+        font-size: 20px; /* Уменьшаем размер заголовка панели */
+    }
+
+    #orderPanel form label {
+        font-size: 14px; /* Уменьшаем размер текста метки формы */
+    }
+
+    #orderPanel form input[type="number"],
+    #orderPanel form button {
+        padding: 8px 12px; /* Уменьшаем отступы элементов формы */
+        font-size: 14px; /* Уменьшаем размер текста в полях ввода и кнопке */
+    }
+}
