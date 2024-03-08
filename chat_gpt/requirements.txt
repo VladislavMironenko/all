@@ -1,0 +1,6 @@
+speech_recognition
+webbrowser
+subprocess
+keyboard
+
+pip install
